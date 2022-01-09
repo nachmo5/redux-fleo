@@ -134,34 +134,34 @@ redux-fleo offers a varierty of hooks to simplify interacting with your requests
 We will use the configuration below in the coming examples:
 ```js
 const config = {
-	queries:[
-		{
-			name: 'user.fetchByFilters',
-			defaultValue: [],
-			service: (gender, situation) => {
-				const filters = { gender, situation };
-				return axios.post("/users", filters).then(({data})=> data);
-			}
-		},
-		{
-			name: 'user.fetchOne',
-			service: (id) => client.get(`/users/${id}`)
-		},
-		{
-			name: 'customer.fetchByCity',
-			defaultValue: [],
-			service: (page, city)=> {
-				return client.get(`/customers?page=${page}&city=${city}`)
-			}
-		}
-	],
-	mutations: [
-		{
-			name: 'user.create',
-			service: (data) => client.post('/users', data)
-		}
-	]
-}
+  queries: [
+    {
+      name: 'user.fetchByFilters',
+      defaultValue: [],
+      service: (gender, situation) => {
+        const filters = { gender, situation };
+        return axios.post('/users', filters).then(({ data }) => data);
+      },
+    },
+    {
+      name: 'user.fetchOne',
+      service: (id) => client.get(`/users/${id}`),
+    },
+    {
+      name: 'customer.fetchByCity',
+      defaultValue: [],
+      service: (page, city) => {
+        return client.get(`/customers?page=${page}&city=${city}`);
+      },
+    },
+  ],
+  mutations: [
+    {
+      name: 'user.create',
+      service: (data) => client.post('/users', data),
+    },
+  ],
+};
 
 ```
 
