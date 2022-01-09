@@ -382,7 +382,8 @@ dependencies       : by default, the depdendencies are the params
                      each time they change, the query will be called again
 					 you can introduce your own depdendencies with this
 
-}					 
+}			
+*/		 
 ```
 
 ### useMultiQuery
@@ -413,7 +414,8 @@ dependencies                   : by default, the depdendencies are the params
                                each time they change, the query will be called again
 				               you can introduce your own depdendencies with this
 
-}					 
+}
+*/	 
 ```
 
 
