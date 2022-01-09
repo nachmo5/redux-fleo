@@ -1,0 +1,53 @@
+{
+  "name": "redux-fleo",
+  "version": "1.1.0",
+  "description": "Redux framework for asynchronous data",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "files": [
+    "/lib"
+  ],
+  "scripts": {
+    "build": "npm run build:esm && npm run build:cjs",
+    "build:esm": "npx tsc --module esnext --outDir lib/esm",
+    "build:cjs": "npx tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": ">=7.2.2",
+    "redux": ">=4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nachmo5/redux-fleo.git"
+  },
+  "keywords": [
+    "redux",
+    "query",
+    "mutation",
+    "apollo",
+    "asynchronous",
+    "react",
+    "refresh",
+    "subscribe",
+    "refetch"
+  ],
+  "author": "Mohamed NACHIT",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nachmo5/redux-fleo/issues"
+  },
+  "homepage": "https://github.com/nachmo5/redux-fleo#readme",
+  "dependencies": {
+    "lodash.get": "^4.4.2"
+  },
+  "devDependencies": {
+    "@types/lodash.get": "^4.4.6",
+    "react": "*",
+    "react-dom": "*",
+    "typescript": "^4.5.4"
+  }
+}
