@@ -104,9 +104,9 @@ export default class HookManager {
     const query = this.queries[name];
     const { dependencies, disabled = false } = config;
     // Generate request data
-    const requestIds = this.useIds(multiParams.map(() => query.name));
+    const requestId = this.useId(name);
     const cacheKeys = multiParams.map(encodeCacheKey);
-    const payloads = requestIds.map((requestId, idx) => ({ requestId, cacheKey: cacheKeys[idx] }));
+    const payloads = cacheKeys.map((cacheKey) => ({ requestId, cacheKey }));
     // Hooks
     const dispatch = useDispatch();
     const sendBatchRequest = createBatchQueryRequest(
@@ -137,7 +137,7 @@ export default class HookManager {
     // Execute batch and dispatch result ------------
     const _dependencies = [disabled, ...(dependencies ? dependencies : [cacheKeys.join(',')])];
     useEffect(() => {
-      if (!disabled) {
+      if (!disabled && multiParams.length > 0) {
         sendBatchRequest(...multiParams);
       }
     }, _dependencies);
@@ -339,16 +339,5 @@ export default class HookManager {
       };
     }, [prefix]);
     return id;
-  };
-
-  useIds = (prefixes: string[] = []) => {
-    const [ids] = useState(() => prefixes.map((prefix) => this.getId(prefix)));
-    useEffect(() => {
-      return () =>
-        prefixes.forEach((prefix) => {
-          this.idTracker[prefix] = this.idTracker[prefix] - 1;
-        });
-    }, [prefixes]);
-    return ids;
   };
 }
